@@ -16,7 +16,11 @@ class MainWindow(QMainWindow):
         self.setMinimumWidth(600)
 
         widget = QLabel("Hello")
-        widget.setStyleSheet("margin:auto 25px auto; padding-bottom: 50%; border: 2px solid red; border-radius: 50px")
+        widget.setStyleSheet("margin: auto 25px auto; "
+                             "padding-bottom: 50%; "
+                             "border: 2px solid red; "
+                             "border-radius: 50px"
+                             )
         font = widget.font()
         font.setPointSize(30)
         font.setBold(True)
@@ -27,7 +31,6 @@ class MainWindow(QMainWindow):
 
 
 app = QApplication(sys.argv)
-app.setStyle('Fusion')
 w = MainWindow()
 w.show()
 app.exec()
