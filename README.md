@@ -1,3 +1,11 @@
+## M.Sc. Data Science Thesis
+**Thesis Title**  
+*Machine learning popular algorithms: In-depth analysis and hands-on implementation.*  
+**Scope - Purpose**  
+TODO  
+**Architecture**  
+TODO
+
 ### Instructions
 **Install python3 and pip:**  
 * Windows: https://phoenixnap.com/kb/how-to-install-python-3-windows
