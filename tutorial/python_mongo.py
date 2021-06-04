@@ -1,13 +1,19 @@
 from pymongo import MongoClient
 
-client = MongoClient(open('../docs/credentials'))
 
-print(client.list_database_names())
+def get_mongo_client():
+    return MongoClient(open('../docs/credentials'))
 
-x = client.list_database_names()
+
+# Useful commands
+# Get mongo client
+client = get_mongo_client()
+# Get database names
+dbs = client.list_database_names()
+# Get specific database
 testDb = client.get_database('testDb')
-
-col = testDb.get_collection('testCollection')
-
-result = list(col.find())
+# Get specific collection
+collection = testDb.get_collection('testCollection')
+# Find all and return result as list of dicts
+result = list(collection.find())
 pass
