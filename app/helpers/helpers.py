@@ -13,4 +13,4 @@ def open_file_name():
 
 def get_mongo_client():
     return MongoClient(
-        'mongodb+srv://kougi:Nikolas12@cluster0.wbmr7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+        open('helpers/credentials'))
