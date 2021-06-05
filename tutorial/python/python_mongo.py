@@ -2,7 +2,8 @@ from pymongo import MongoClient
 
 
 def get_mongo_client():
-    return MongoClient(open('../docs/credentials'))
+    return MongoClient(
+        'mongodb+srv://kougi:Nikolas12@cluster0.wbmr7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 
 
 # Useful commands
