@@ -1,4 +1,4 @@
 docs/
 .idea/
 tutorial/test.py
-/app/helpers/credentials
+/app/helpers/mongocredentials
