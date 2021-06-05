@@ -1,3 +1,4 @@
+# Helper methods to be used from main python script
 import tkinter as tk
 from tkinter.filedialog import askopenfilename
 import os
