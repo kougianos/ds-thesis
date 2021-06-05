@@ -13,5 +13,4 @@ def open_file_name():
 
 
 def get_mongo_client():
-    return MongoClient(
-        open('helpers/mongocredentials'))
+    return MongoClient(open('helpers/mongocredentials'))
