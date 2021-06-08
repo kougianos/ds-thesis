@@ -2,3 +2,4 @@ docs/
 .idea/
 tutorial/test.py
 /app/helpers/mongocredentials
+/tutorial/python/test_folder/student-merged.csv
