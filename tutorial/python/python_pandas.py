@@ -2,11 +2,15 @@ import pandas as pd
 
 
 def dataframe_details(dataframe):
-    lines = dataframe.shape[0]
-    columns = dataframe.shape[1]
-    total_elements = int(dataframe.size)
-    null_elements = dataframe.isna().sum().sum()
+    info_dict = {
+        'lines': dataframe.shape[0],
+        'columns': dataframe.shape[1],
+        'total_elements': int(dataframe.size),
+        'null_elements': int(dataframe.isna().sum().sum())
+    }
     descr = dataframe.describe().to_dict()
+    descr_df = pd.DataFrame(descr)
+    descr_df.to_csv('df.csv', index=True, header=True)
     pass
 
 
