@@ -18,8 +18,7 @@ def dataframe_details(dataframe):
 df = pd.read_csv('test_folder/student-merged.csv')
 
 # Get descriptive statistics from dataframe as dict
-descr_to_dict = df.describe().to_dict()
-descr_to_dict = dataframe_details(df)
+df_details = dataframe_details(df)
 
 # Get specific column of dataframe to list
 g1 = df['G1']
