@@ -4,6 +4,8 @@ import pandas as pd
 sys.dont_write_bytecode = True
 from helpers import helpers as h
 
+h.welcome_screen()
+
 file = h.open_file_name()
 
 df = pd.read_csv(file)
