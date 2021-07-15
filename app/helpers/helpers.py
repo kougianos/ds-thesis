@@ -1,30 +1,32 @@
 # Helper methods to be used from main python script
-import tkinter as tk
-from tkinter.filedialog import askopenfilename, askdirectory
-from tkinter import messagebox, Label, X
 import os
+import tkinter as tk
+from tkinter import Label
+from tkinter.filedialog import askopenfilename, askdirectory
+
+import pandas
 import pandas as pd
 from pymongo import MongoClient
 
 
-def open_file_name():
+def open_file_name() -> str:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     tk.Tk().withdraw()
     filename = askopenfilename(initialdir=dir_path, title='Select which file to open')
     return filename
 
 
-def get_mongo_client():
+def get_mongo_client() -> MongoClient:
     return MongoClient(open('helpers/mongocredentials'))
 
 
-def dataframe_details(dataframe):
+def get_dataframe_details(dataframe: pandas.DataFrame) -> pandas.DataFrame:
     details = dataframe.describe().to_dict()
     details_df = pd.DataFrame(details)
     return details_df
 
 
-def get_dataframe_general_info(dataframe):
+def get_dataframe_general_info(dataframe: pandas.DataFrame) -> pandas.DataFrame:
     general_info_dict = {
         'lines': [dataframe.shape[0]],
         'columns': [dataframe.shape[1]],
@@ -37,12 +39,15 @@ def get_dataframe_general_info(dataframe):
     return info_df
 
 
-def save_dataframe_to_excel(dataframe, filename):
-    directory = get_directory()
-    dataframe.to_excel(directory + '/' + filename + '.xlsx', index=True, header=True)
+def save_dataframe_to_excel(dataframe: pandas.DataFrame, filename: str, askfordir: bool = True) -> None:
+    if askfordir:
+        directory = get_directory()
+        dataframe.to_excel(directory + '/' + filename + '.xlsx', index=True, header=True)
+    else:
+        dataframe.to_excel(filename + '.xlsx', index=True, header=True)
 
 
-def get_directory():
+def get_directory() -> str:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     tk.Tk().withdraw()
     directory = askdirectory(initialdir=dir_path, title='Select where to save the file')
@@ -103,7 +108,7 @@ def welcome_screen():
 
 
 # TODO
-def welcome_text():
+def welcome_text() -> str:
     return '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
     commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
