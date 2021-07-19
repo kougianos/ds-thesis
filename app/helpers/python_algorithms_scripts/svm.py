@@ -3,9 +3,9 @@ from sklearn import svm, metrics
 import datetime
 
 begin_time = datetime.datetime.now()
-df1 = pd.read_csv('../data/datatest.csv').drop(['sn', 'date'], axis=1)
-df2 = pd.read_csv('../data/datatest2.csv').drop(['sn', 'date'], axis=1)
-df_train = pd.read_csv('../data/datatraining.csv').drop(['sn', 'date'], axis=1)
+df1 = pd.read_csv('../../data/datatest.csv').drop(['sn', 'date'], axis=1)
+df2 = pd.read_csv('../../data/datatest2.csv').drop(['sn', 'date'], axis=1)
+df_train = pd.read_csv('../../data/datatraining.csv').drop(['sn', 'date'], axis=1)
 df_test = df1.append(df2)
 
 x_train = df_train.iloc[:, 0:5]
