@@ -2,5 +2,5 @@ docs/
 .idea/
 .vscode
 tutorial/test.py
-app/helpers/mongocredentials
+app/data/mongocredentials
 tutorial/python/test_folder/student-merged.csv
