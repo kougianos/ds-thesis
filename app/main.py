@@ -4,7 +4,7 @@ import pandas as pd
 sys.dont_write_bytecode = True
 from helpers import helpers as h
 
-# TODO make interactive app
+# TODO make interactive app using tkinter
 h.welcome_screen()
 
 file = h.open_file_name()
