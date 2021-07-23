@@ -1,11 +1,13 @@
-# Helper methods to be used from main python script
+# Helper methods to be used from main python scripts
 import os
 import tkinter as tk
 from tkinter import Label
 from tkinter.filedialog import askopenfilename, askdirectory
 
+import cpuinfo
 import pandas
 import pandas as pd
+import psutil
 from pymongo import MongoClient
 
 
@@ -114,3 +116,26 @@ def welcome_text() -> str:
     commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est 
     laborum. '''
+
+
+def get_processor_name() -> str:
+    return cpuinfo.get_cpu_info()['brand_raw']
+
+
+def get_size(bytez, suffix="B") -> str:
+    """
+    Scale bytes to its proper format
+    e.g:
+        1253656 => '1.20MB'
+        1253656678 => '1.17GB'
+    """
+    factor = 1024
+    for unit in ["", "K", "M", "G", "T", "P"]:
+        if bytez < factor:
+            return f"{bytez:.2f}{unit}{suffix}"
+        bytez /= factor
+
+
+def get_total_memory() -> str:
+    svmem = psutil.virtual_memory()
+    return get_size(svmem.total)
