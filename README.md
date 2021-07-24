@@ -7,7 +7,7 @@ TODO
 TODO
 
 #
-### Instructions
+### Instructions and helpful information
 **Install python3 and pip:**  
 * Windows: https://phoenixnap.com/kb/how-to-install-python-3-windows
 * Mac OS: https://docs.python-guide.org/starting/install3/osx/
