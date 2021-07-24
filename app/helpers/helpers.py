@@ -82,7 +82,7 @@ def welcome_screen():
     top.title("Welcome Screen")
     label_middle = Label(
         top,
-        text=welcome_text(),
+        text=welcome_text_tkinter(),
         wraplength=400,
         font=calibri_font,
     )
@@ -110,7 +110,7 @@ def welcome_screen():
 
 
 # TODO
-def welcome_text() -> str:
+def welcome_text_tkinter() -> str:
     return '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
     dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
     commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
@@ -137,5 +137,62 @@ def get_size(bytez, suffix="B") -> str:
 
 
 def get_total_memory() -> str:
-    svmem = psutil.virtual_memory()
-    return get_size(svmem.total)
+    mem = psutil.virtual_memory()
+    return get_size(mem.total)
+
+
+def get_user_preferred_language() -> str:
+    while True:
+        try:
+            lang = int(input())
+        except ValueError:
+            print("Wrong input. Valid inputs: 1 or 2")
+            continue
+        else:
+            if lang not in [1, 2]:
+                print("Wrong input. Valid inputs: 1 or 2")
+                continue
+            if lang == 1:
+                print('Your selected language is English')
+                return "EN"
+            else:
+                print('Your selected language is Greek')
+                return "GR"
+
+
+def print_init_cli():
+    f = open('text/initCLI.txt', encoding="utf8")
+    print(f.read())
+
+
+def print_welcome_cli(lang='EN'):
+    f = open('text/welcomeCLI_' + lang + '.txt', encoding="utf8")
+    print(f.read())
+
+
+def get_user_selected_functionality_cli(lang='EN') -> int:
+    if lang == 'EN':
+        wrong_input = "Wrong input. Valid inputs: 1, 2 or 3"
+    else:
+        wrong_input = "Λάθος επιλογή. Έγκυρες επιλογές: 1, 2 ή 3"
+    while True:
+        try:
+            choice = int(input())
+        except ValueError:
+            print(wrong_input)
+            continue
+        else:
+            if choice not in [1, 2, 3]:
+                print(wrong_input)
+                continue
+            return choice
+
+
+def get_user_name(lang='EN') -> str:
+    f = open('text/functionality1_username_' + lang + '.txt', encoding="utf8")
+    print(f.read())
+    username = input()
+    if username == '':
+        return 'defaultUser'
+    else:
+        return username

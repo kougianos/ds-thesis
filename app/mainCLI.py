@@ -3,8 +3,15 @@ import sys
 sys.dont_write_bytecode = True
 from helpers import helpers as h
 
-# TODO
-print(h.get_processor_name())
-print(h.get_total_memory())
+username = 'defaultUser'
+
+h.print_init_cli()
+lang = h.get_user_preferred_language()
+h.print_welcome_cli(lang)
+
+functionality = h.get_user_selected_functionality_cli(lang)
+
+if functionality == 1:
+    username = h.get_user_name(lang)
 
 pass

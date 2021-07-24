@@ -1,5 +1,8 @@
+
 This Command Line application was developed by Nikos Kougianos, in terms of his Thesis in M.Sc Data Science. Please read LICENSE file for more information regarding copyrights.
 So far it offers 3 capabilities, which are:
-- Executing an algorithm of your choice to a predefined dataset. Algorithm execution metrics along with other information (username, cpu info etc.) are then saved to a MongoDB cluster.
-- Open a dataset of your choice and create excel files with basic and extended information regarding the dataset.
-- Retrieve algorithm execution metrics from other users (including yourself) and save them to an excel file.
+ 1. Executing an algorithm of your choice to a predefined dataset. Algorithm execution metrics along with other information (username, cpu info etc.) are then saved to a MongoDB cluster.
+ 2. Open a dataset of your choice and create excel files with basic and extended information regarding the dataset.
+ 3. Retrieve algorithm execution metrics from other users (including yourself) and save them to an excel file.
+
+Please choose on of the above options (1 to 3):

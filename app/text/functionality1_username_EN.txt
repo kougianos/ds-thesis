@@ -1,0 +1,6 @@
+
+You chose functionality 1. This functionality lets you execute one supervised learning algorithm to a predefined dataset.
+The dataset was taken from a paper called "Accurate occupancy detection of an office room from light, temperature, humidity and CO2 measurements using statistical learning models"
+You can read more about it here: https://www.sciencedirect.com/science/article/abs/pii/S0378778815304357
+
+Please provide a username, that will be used for storing information in MongoDB. You can also press Enter and 'defaultUser' name will be used:

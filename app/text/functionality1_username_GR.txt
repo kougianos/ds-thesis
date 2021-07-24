@@ -1,0 +1,6 @@
+
+Επιλέξατε την λειτουργικότητα 1. Αυτή η λειτουργικότητα σας επιτρέπει να εκτελέσετε έναν αλγόριθμο εποπτευόμενης μάθησης σε ένα προκαθορισμένο dataset.
+Το dataset αντλήθηκε από μια δημοσίευση με τίτλο "Accurate occupancy detection of an office room from light, temperature, humidity and CO2 measurements using statistical learning models"
+Μπορείτε να διαβάσετε περισσότερα εδώ: https://www.sciencedirect.com/science/article/abs/pii/S0378778815304357
+
+Παρακαλώ παραχωρήστε ένα username, το οποίο θα χρησιμοποιηθεί για αποθήκευση πληροφοριών στην MongoDB. Μπορείτε επίσης να πατήσετε απλά Enter και τότε θα επιλεχθεί το όνομα 'defaultUser':
