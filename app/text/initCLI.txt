@@ -1,0 +1,3 @@
+Welcome! Please choose your language:
+Press 1 for English
+Press 2 for Greek
