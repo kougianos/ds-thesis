@@ -1,4 +1,5 @@
 # Helper methods to be used from main python scripts
+import datetime
 import os
 import tkinter as tk
 import tkinter.messagebox
@@ -10,6 +11,10 @@ import pandas
 import pandas as pd
 import psutil
 from pymongo import MongoClient
+from sklearn import svm, metrics
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
 
 
 def open_file_name() -> str:
@@ -256,3 +261,81 @@ def show_tkinter_errorbox(title: str, msg: str):
     root.wm_attributes('-topmost', 1)
     root.withdraw()
     tkinter.messagebox.showerror(title, msg, parent=root)
+
+
+def get_user_selected_algorithm(lang: str = 'EN') -> str:
+    choice = 0
+    f = open('text/functionality1_algorithm_' + lang + '.txt', encoding="utf8")
+    print(f.read())
+    if lang == 'EN':
+        wrong_input = "Wrong input. Valid inputs: 1, 2, 3 or 4"
+    else:
+        wrong_input = "Λάθος επιλογή. Έγκυρες επιλογές: 1, 2, 3 ή 4"
+    while True:
+        try:
+            choice = int(input())
+        except ValueError:
+            print(wrong_input)
+            continue
+        else:
+            if choice not in [1, 2, 3, 4]:
+                print(wrong_input)
+                continue
+            break
+
+    algorithms_tuple = ('SVM', 'Logistic Regression', 'Naive Bayes', 'Decision Tree')
+    selected_algorithm = algorithms_tuple[choice - 1]
+    msg = 'Algorithm: ' + selected_algorithm
+    print(msg)
+    show_tkinter_messagebox('INFO', msg)
+    return selected_algorithm
+
+
+def execute_user_selected_algorithm(selected_algorithm: str, lang: str = 'EN') -> dict:
+    df1 = pd.read_csv('data/datatest.csv').drop(['sn', 'date'], axis=1)
+    df2 = pd.read_csv('data/datatest2.csv').drop(['sn', 'date'], axis=1)
+    df_train = pd.read_csv('data/datatraining.csv').drop(['sn', 'date'], axis=1)
+    df_test = df1.append(df2)
+    x_train = df_train.iloc[:, 0:5]
+    x_test = df_test.iloc[:, 0:5]
+    y_train = df_train['Occupancy']
+    y_test = df_test['Occupancy']
+    clf = None
+    results = dict()
+
+    if selected_algorithm == 'SVM':
+        clf = svm.SVC(kernel='linear')
+    elif selected_algorithm == 'Logistic Regression':
+        clf = LogisticRegression(solver='lbfgs')
+    elif selected_algorithm == 'Naive Bayes':
+        clf = GaussianNB()
+    elif selected_algorithm == 'Decision Tree':
+        clf = DecisionTreeClassifier()
+
+    if lang == 'EN':
+        print(selected_algorithm + ' execution in progress...')
+    else:
+        print('Ο αλγόριθμος ' + selected_algorithm + ' βρίσκεται σε εκτέλεση...')
+
+    results['algorithmExecuted'] = selected_algorithm
+    results['executedOn'] = str(datetime.datetime.now())
+    results['cpu'] = get_processor_name()
+    results['ram'] = get_total_memory()
+    results['isCharging'] = str(psutil.sensors_battery().power_plugged)
+    begin_time = datetime.datetime.now()
+    clf.fit(x_train, y_train)
+    y_pred = clf.predict(x_test)
+
+    accuracy = metrics.accuracy_score(y_test, y_pred)
+    precision = metrics.precision_score(y_test, y_pred)
+    recall = metrics.recall_score(y_test, y_pred)
+    f1_score = metrics.f1_score(y_test, y_pred)
+
+    results['accuracy'] = str(accuracy)
+    results['precision'] = str(precision)
+    results['recall'] = str(recall)
+    results['f1'] = str(f1_score)
+
+    completion_time = datetime.datetime.now() - begin_time
+    results['executionTime'] = str(completion_time)
+    return results

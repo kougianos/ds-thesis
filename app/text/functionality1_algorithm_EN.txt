@@ -1,0 +1,7 @@
+
+Please select which algorithm should be trained and executed on the predefined dataset.
+Available choices are:
+ 1 -> SVM
+ 2 -> Logistic Regression
+ 3 -> Naive Bayes
+ 4 -> Decision Tree

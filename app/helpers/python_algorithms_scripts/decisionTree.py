@@ -25,7 +25,7 @@ f1_score = metrics.f1_score(y_test, y_pred)
 print('Accuracy: ' + str(accuracy))
 print('Precision: ' + str(precision))
 print('Recall: ' + str(recall))
-print('F1 Score: ' + str(recall))
+print('F1 Score: ' + str(f1_score))
 
 completion_time = datetime.datetime.now() - begin_time
 print('Completion time: ' + str(completion_time))
