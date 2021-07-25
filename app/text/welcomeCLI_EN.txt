@@ -5,4 +5,4 @@ So far it offers 3 capabilities, which are:
  2. Open a dataset of your choice and create excel files with basic and extended information regarding the dataset.
  3. Retrieve algorithm execution metrics from other users (including yourself) and save them to an excel file.
 
-Please choose on of the above options (1 to 3):
+Please choose one of the above functionalities (1 to 3):

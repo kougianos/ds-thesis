@@ -16,6 +16,7 @@ if functionality == 1:
     # TODO
 elif functionality == 2:
     df, filename = h.get_user_dataframe(lang)
+    h.ask_user_destination_folder_and_save_excels(df, filename, lang)
 else:
     pass
 

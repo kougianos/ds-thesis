@@ -1,6 +1,7 @@
 # Helper methods to be used from main python scripts
 import os
 import tkinter as tk
+import tkinter.messagebox
 from tkinter import Label
 from tkinter.filedialog import askopenfilename, askdirectory
 
@@ -41,18 +42,19 @@ def get_dataframe_general_info(dataframe: pandas.DataFrame) -> pandas.DataFrame:
     return info_df
 
 
-def save_dataframe_to_excel(dataframe: pandas.DataFrame, filename: str, askfordir: bool = True) -> None:
+def save_dataframe_to_excel(dataframe: pandas.DataFrame, filename: str, askfordir: bool = True,
+                            directory: str = '.') -> None:
     if askfordir:
         directory = get_directory()
         dataframe.to_excel(directory + '/' + filename + '.xlsx', index=True, header=True)
     else:
-        dataframe.to_excel(filename + '.xlsx', index=True, header=True)
+        dataframe.to_excel(directory + '/' + filename + '.xlsx', index=True, header=True)
 
 
 def get_directory() -> str:
     dir_path = os.path.dirname(os.path.realpath(__file__))
     tk.Tk().withdraw()
-    directory = askdirectory(initialdir=dir_path, title='Select where to save the file')
+    directory = askdirectory(initialdir=dir_path, title='Select where to save the file(s)')
     return directory
 
 
@@ -165,12 +167,12 @@ def print_init_cli():
     print(f.read())
 
 
-def print_welcome_cli(lang='EN'):
+def print_welcome_cli(lang: str = 'EN'):
     f = open('text/welcomeCLI_' + lang + '.txt', encoding="utf8")
     print(f.read())
 
 
-def get_user_selected_functionality_cli(lang='EN') -> int:
+def get_user_selected_functionality_cli(lang: str = 'EN') -> int:
     if lang == 'EN':
         wrong_input = "Wrong input. Valid inputs: 1, 2 or 3"
     else:
@@ -188,7 +190,7 @@ def get_user_selected_functionality_cli(lang='EN') -> int:
             return choice
 
 
-def get_user_name(lang='EN') -> str:
+def get_user_name(lang: str = 'EN') -> str:
     f = open('text/functionality1_username_' + lang + '.txt', encoding="utf8")
     print(f.read())
     username = input()
@@ -198,7 +200,7 @@ def get_user_name(lang='EN') -> str:
         return username
 
 
-def get_user_dataframe(lang='EN'):
+def get_user_dataframe(lang: str = 'EN'):
     f = open('text/functionality2_' + lang + '.txt', encoding="utf8")
     print(f.read())
     while True:
@@ -207,11 +209,34 @@ def get_user_dataframe(lang='EN'):
             if filename == '':
                 exit(1)
             if lang == 'EN':
-                print('ERROR: File does not have .csv extension. Please open another file')
+                err = 'ERROR: File does not have .csv extension. Please open another file'
+                print(err)
+                tkinter.messagebox.showerror('ERROR', err)
                 continue
             else:
-                print('ERROR: Το αρχείο δεν έχει επέκταση .csv. Παρακαλώ επιλέξτε άλλο αρχείο')
+                err = 'ΣΦΑΛΜΑ: Το αρχείο δεν έχει επέκταση .csv. Παρακαλώ επιλέξτε άλλο αρχείο'
+                print(err)
+                tkinter.messagebox.showerror('ΣΦΑΛΜΑ', err)
                 continue
         break
-
     return pd.read_csv(filename), str.replace(filename, '.csv', '').rpartition('/')[2]
+
+
+def ask_user_destination_folder_and_save_excels(dataframe: pandas.DataFrame, filename: str, lang: str = 'EN'):
+    f = open('text/functionality2_end_' + lang + '.txt', encoding="utf8")
+    print(f.read().replace('$DATASET$', filename))
+    directory = get_directory()
+    if directory == '':
+        exit(1)
+    df_info = get_dataframe_general_info(dataframe)
+    df_details = get_dataframe_details(dataframe)
+    save_dataframe_to_excel(df_info, filename + '_info', False, directory)
+    save_dataframe_to_excel(df_details, filename + '_details', False, directory)
+    if lang == 'EN':
+        msg = 'Excel files saved successfully'
+        print(msg)
+        tkinter.messagebox.showinfo('INFO', msg)
+    else:
+        msg = 'Τα αρχεία excel σώθηκαν επιτυχώς'
+        print(msg)
+        tkinter.messagebox.showinfo('INFO', msg)
