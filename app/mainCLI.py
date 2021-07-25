@@ -13,5 +13,10 @@ functionality = h.get_user_selected_functionality_cli(lang)
 
 if functionality == 1:
     username = h.get_user_name(lang)
+    # TODO
+elif functionality == 2:
+    df, filename = h.get_user_dataframe(lang)
+else:
+    pass
 
 pass

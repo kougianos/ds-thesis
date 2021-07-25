@@ -1,0 +1,7 @@
+
+You chose functionality 2. This functionality lets you open a dataset of your choice in CSV format and create 2 excel files that contain essential information.
+For example, if you select a dataset named "test_dataset.csv", the created excel files will be the following:
+- test_dataset_info.xlsx    -> Excel file that contains number of lines, columns, null values etc.
+- test_dataset_details.xlsx -> Excel file that contains further information such as mean values, standard deviation etc.
+
+Please select your dataset, in CSV format:

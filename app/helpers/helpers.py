@@ -196,3 +196,22 @@ def get_user_name(lang='EN') -> str:
         return 'defaultUser'
     else:
         return username
+
+
+def get_user_dataframe(lang='EN'):
+    f = open('text/functionality2_' + lang + '.txt', encoding="utf8")
+    print(f.read())
+    while True:
+        filename = open_file_name()
+        if '.csv' not in filename:
+            if filename == '':
+                exit(1)
+            if lang == 'EN':
+                print('ERROR: File does not have .csv extension. Please open another file')
+                continue
+            else:
+                print('ERROR: Το αρχείο δεν έχει επέκταση .csv. Παρακαλώ επιλέξτε άλλο αρχείο')
+                continue
+        break
+
+    return pd.read_csv(filename), str.replace(filename, '.csv', '').rpartition('/')[2]
