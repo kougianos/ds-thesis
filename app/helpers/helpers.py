@@ -14,7 +14,9 @@ from pymongo import MongoClient
 
 def open_file_name() -> str:
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    tk.Tk().withdraw()
+    root = tk.Tk()
+    root.wm_attributes('-topmost', 1)
+    root.withdraw()
     filename = askopenfilename(initialdir=dir_path, title='Select which file to open')
     return filename
 
@@ -158,7 +160,7 @@ def get_user_preferred_language() -> str:
                 print('Your selected language is English')
                 return "EN"
             else:
-                print('Your selected language is Greek')
+                print('Η επιλεγμένη γλώσσα είναι τα ελληνικά')
                 return "GR"
 
 
@@ -195,9 +197,11 @@ def get_user_name(lang: str = 'EN') -> str:
     print(f.read())
     username = input()
     if username == '':
-        return 'defaultUser'
-    else:
-        return username
+        username = 'defaultUser'
+    msg = 'Username: ' + username
+    print(msg)
+    show_tkinter_messagebox('INFO', msg)
+    return username
 
 
 def get_user_dataframe(lang: str = 'EN'):
@@ -211,12 +215,12 @@ def get_user_dataframe(lang: str = 'EN'):
             if lang == 'EN':
                 err = 'ERROR: File does not have .csv extension. Please open another file'
                 print(err)
-                tkinter.messagebox.showerror('ERROR', err)
+                show_tkinter_errorbox('ERROR', err)
                 continue
             else:
                 err = 'ΣΦΑΛΜΑ: Το αρχείο δεν έχει επέκταση .csv. Παρακαλώ επιλέξτε άλλο αρχείο'
                 print(err)
-                tkinter.messagebox.showerror('ΣΦΑΛΜΑ', err)
+                show_tkinter_errorbox('ΣΦΑΛΜΑ', err)
                 continue
         break
     return pd.read_csv(filename), str.replace(filename, '.csv', '').rpartition('/')[2]
@@ -234,9 +238,21 @@ def ask_user_destination_folder_and_save_excels(dataframe: pandas.DataFrame, fil
     save_dataframe_to_excel(df_details, filename + '_details', False, directory)
     if lang == 'EN':
         msg = 'Excel files saved successfully'
-        print(msg)
-        tkinter.messagebox.showinfo('INFO', msg)
     else:
         msg = 'Τα αρχεία excel σώθηκαν επιτυχώς'
-        print(msg)
-        tkinter.messagebox.showinfo('INFO', msg)
+    print(msg)
+    show_tkinter_messagebox('INFO', msg)
+
+
+def show_tkinter_messagebox(title: str, msg: str):
+    root = tk.Tk()
+    root.wm_attributes('-topmost', 1)
+    root.withdraw()
+    tkinter.messagebox.showinfo(title, msg, parent=root)
+
+
+def show_tkinter_errorbox(title: str, msg: str):
+    root = tk.Tk()
+    root.wm_attributes('-topmost', 1)
+    root.withdraw()
+    tkinter.messagebox.showerror(title, msg, parent=root)
