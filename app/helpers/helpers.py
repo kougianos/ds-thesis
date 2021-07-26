@@ -27,7 +27,7 @@ def open_file_name() -> str:
 
 
 def get_mongo_client() -> MongoClient:
-    return MongoClient(open('helpers/mongocredentials'))
+    return MongoClient(open('data/mongocredentials'))
 
 
 def get_dataframe_details(dataframe: pandas.DataFrame) -> pandas.DataFrame:
@@ -205,7 +205,6 @@ def get_user_name(lang: str = 'EN') -> str:
         username = 'defaultUser'
     msg = 'Username: ' + username
     print(msg)
-    show_tkinter_messagebox('INFO', msg)
     return username
 
 
@@ -246,7 +245,6 @@ def ask_user_destination_folder_and_save_excels(dataframe: pandas.DataFrame, fil
     else:
         msg = 'Τα αρχεία excel σώθηκαν επιτυχώς'
     print(msg)
-    show_tkinter_messagebox('INFO', msg)
 
 
 def show_tkinter_messagebox(title: str, msg: str):
@@ -287,7 +285,6 @@ def get_user_selected_algorithm(lang: str = 'EN') -> str:
     selected_algorithm = algorithms_tuple[choice - 1]
     msg = 'Algorithm: ' + selected_algorithm
     print(msg)
-    show_tkinter_messagebox('INFO', msg)
     return selected_algorithm
 
 
@@ -338,4 +335,29 @@ def execute_user_selected_algorithm(selected_algorithm: str, lang: str = 'EN') -
 
     completion_time = datetime.datetime.now() - begin_time
     results['executionTime'] = str(completion_time)
+
+    if lang == 'EN':
+        print(selected_algorithm + ' execution finished successfully!')
+    else:
+        print('Ο αλγόριθμος ' + selected_algorithm + ' εκτελέστηκε επιτυχώς!')
+
     return results
+
+
+def save_results_to_mongodb(results: dict, lang: str = 'EN') -> str:
+    if lang == 'EN':
+        print('Saving results to MongoDB...')
+    else:
+        print('Αποθήκευση αποτελεσμάτων στην MongoDB...')
+
+    mongo_client = get_mongo_client()
+    algorithms_db = mongo_client.get_database('algorithmsDb')
+    algorithms_collection = algorithms_db.get_collection('algorithmsCollection')
+    insert_result = algorithms_collection.insert_one(results)
+    doc_id = str(insert_result.inserted_id)
+
+    if lang == 'EN':
+        print('MongoDB document successfully inserted. ID: ' + doc_id)
+    else:
+        print('Επιτυχημένη αποθήκευση στην MongoDB. ID: ' + doc_id)
+    return doc_id
