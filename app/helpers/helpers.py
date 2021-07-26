@@ -1,5 +1,6 @@
 # Helper methods to be used from main python scripts
 import datetime
+import json
 import os
 import tkinter as tk
 import tkinter.messagebox
@@ -360,4 +361,5 @@ def save_results_to_mongodb(results: dict, lang: str = 'EN') -> str:
         print('MongoDB document successfully inserted. ID: ' + doc_id)
     else:
         print('Επιτυχημένη αποθήκευση στην MongoDB. ID: ' + doc_id)
+    print(json.dumps(results, indent=4, sort_keys=False, default=str, ensure_ascii=False))
     return doc_id
