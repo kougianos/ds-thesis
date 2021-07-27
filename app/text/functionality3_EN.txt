@@ -1,0 +1,4 @@
+
+You chose functionality 3. This functionality lets you retrieve information about all algorithm executions that have taken place, from all users.
+Information will be assembled together in a matrix and will be saved to an excel file named "algorithm_executions.xlsx", to a destination folder of your choice.
+Gathering information from database...
