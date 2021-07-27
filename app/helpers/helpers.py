@@ -51,12 +51,17 @@ def get_dataframe_general_info(dataframe: pandas.DataFrame) -> pandas.DataFrame:
 
 
 def save_dataframe_to_excel(dataframe: pandas.DataFrame, filename: str, askfordir: bool = True,
-                            directory: str = '.') -> None:
+                            directory: str = '.', lang='EN') -> None:
     if askfordir:
         directory = get_directory()
         dataframe.to_excel(directory + '/' + filename + '.xlsx', index=True, header=True)
     else:
         dataframe.to_excel(directory + '/' + filename + '.xlsx', index=True, header=True)
+
+    if lang == 'EN':
+        print("Excel file saved successfully!")
+    else:
+        print("Το αρχείο excel σώθηκε επιτυχώς!")
 
 
 def get_directory() -> str:
@@ -239,8 +244,8 @@ def ask_user_destination_folder_and_save_excels(dataframe: pandas.DataFrame, fil
         exit(1)
     df_info = get_dataframe_general_info(dataframe)
     df_details = get_dataframe_details(dataframe)
-    save_dataframe_to_excel(df_info, filename + '_info', False, directory)
-    save_dataframe_to_excel(df_details, filename + '_details', False, directory)
+    save_dataframe_to_excel(df_info, filename + '_info', False, directory, lang=lang)
+    save_dataframe_to_excel(df_details, filename + '_details', False, directory,lang=lang)
     if lang == 'EN':
         msg = 'Excel files saved successfully'
     else:
@@ -363,3 +368,16 @@ def save_results_to_mongodb(results: dict, lang: str = 'EN') -> str:
         print('Επιτυχημένη αποθήκευση στην MongoDB. ID: ' + doc_id)
     print(json.dumps(results, indent=4, sort_keys=False, default=str, ensure_ascii=False))
     return doc_id
+
+
+def get_mongo_algorithm_executions(lang: str = 'EN') -> pandas.DataFrame:
+    f = open('text/functionality3_' + lang + '.txt', encoding="utf8")
+    print(f.read())
+    mongo_client = get_mongo_client()
+    algorithms_db = mongo_client.get_database('algorithmsDb')
+    algorithms_collection = algorithms_db.get_collection('algorithmsCollection')
+    results = list(algorithms_collection.find({}, {"_id": 0}))
+    df = pd.DataFrame(results, columns=["username", "algorithmExecuted", "executedOn", "cpu", "ram", "isCharging",
+                                        "accuracy", "precision", "recall", "f1", "executionTime"])
+    print("MongoDB retrieve: DONE")
+    return df

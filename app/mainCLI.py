@@ -22,6 +22,8 @@ elif functionality == 2:
     df, filename = h.get_user_dataframe(lang)
     h.ask_user_destination_folder_and_save_excels(df, filename, lang)
 elif functionality == 3:
+    results_df = h.get_mongo_algorithm_executions(lang)
+    h.save_dataframe_to_excel(results_df, 'algorithm_executions', True, lang=lang)
     pass
 
 pass
