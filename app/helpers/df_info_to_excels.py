@@ -22,5 +22,3 @@ h.save_dataframe_to_excel(df3_general_info, 'datatraining_info', False)
 h.save_dataframe_to_excel(df1_details, 'datatest_details', False)
 h.save_dataframe_to_excel(df2_details, 'datatest2_details', False)
 h.save_dataframe_to_excel(df3_details, 'datatraining_details', False)
-
-pass
