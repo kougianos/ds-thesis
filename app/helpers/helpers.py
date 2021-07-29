@@ -245,12 +245,7 @@ def ask_user_destination_folder_and_save_excels(dataframe: pandas.DataFrame, fil
     df_info = get_dataframe_general_info(dataframe)
     df_details = get_dataframe_details(dataframe)
     save_dataframe_to_excel(df_info, filename + '_info', False, directory, lang=lang)
-    save_dataframe_to_excel(df_details, filename + '_details', False, directory,lang=lang)
-    if lang == 'EN':
-        msg = 'Excel files saved successfully'
-    else:
-        msg = 'Τα αρχεία excel σώθηκαν επιτυχώς'
-    print(msg)
+    save_dataframe_to_excel(df_details, filename + '_details', False, directory, lang=lang)
 
 
 def show_tkinter_messagebox(title: str, msg: str):
