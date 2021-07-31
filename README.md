@@ -1,13 +1,16 @@
-## M.Sc. Data Science Thesis
-**Thesis Title**  
-*Machine learning popular algorithms: In-depth analysis and hands-on implementation.*  
-**Scope - Purpose**  
-The scope of this repository is to present essential information related with the fields of Data Science and Machine Learning, and implement a Command Line Interface that offers 3 main functionalities, explained below.
+## Machine learning popular algorithms: In-depth analysis and hands-on implementation.
 
-The theoretical part of this thesis is presented in Chapters 2 and 3 of thesis_kougianos.pdf, while the practical one in Chapter 4. The 3 main functionalities that are currently supported by the CLI are:
- 1. Executing an algorithm of your choice to a predefined dataset. Algorithm execution metrics along with other information (username, cpu info etc.) are then saved to a MongoDB cluster.
- 2. Open a dataset of your choice and create excel files with basic and extended information regarding the dataset.
- 3. Retrieve algorithm execution metrics from other users (including yourself) and save them to an excel file.
+**Scope - Purpose**  
+The scope of this repository is to present essential information related with the fields of Data Science and Machine Learning, and implement a Command Line Interface that offers 3 functionalities, explained below.
+
+The theoretical part of this thesis is presented in Chapters 2 and 3 of *thesis_kougianos.pdf*, while the practical one in Chapter 4. The 3 main functionalities that are currently supported by the CLI are:  
+*	Executing a supervised learning algorithm of your choice to a predefined dataset. Algorithm execution metrics along with other information (username, cpu info etc.) are then saved in a MongoDB cluster. Supported algorithms: <br>
+  &nbsp;&nbsp;&nbsp;&nbsp; 1.	SVM   
+  &nbsp;&nbsp;&nbsp;&nbsp; 2.	Logistic Regression  
+  &nbsp;&nbsp;&nbsp;&nbsp; 3.	Naive Bayes  
+  &nbsp;&nbsp;&nbsp;&nbsp; 4.	Decision Tree  
+*	Open a dataset of your choice and create excel files with basic and extended information regarding the dataset. The files are saved in a user-defined destination folder.
+*	Retrieve algorithm execution metrics from other users (including yourself) and save them to an excel file, in a folder of your choice.
 
 **Architecture**  
 TODO
