@@ -52,6 +52,11 @@ def get_dataframe_general_info(dataframe: pandas.DataFrame) -> pandas.DataFrame:
 
 def save_dataframe_to_excel(dataframe: pandas.DataFrame, filename: str, askfordir: bool = True,
                             directory: str = '.', lang='EN') -> None:
+    if lang == 'EN':
+        print("Please choose where to save excel file:")
+    else:
+        print("Παρακαλώ επιλέξτε που θα σωθεί το αρχείο excel:")
+
     if askfordir:
         directory = get_directory()
         dataframe.to_excel(directory + '/' + filename + '.xlsx', index=True, header=True)
@@ -97,7 +102,7 @@ def welcome_screen():
     top.title("Welcome Screen")
     label_middle = Label(
         top,
-        text=welcome_text_tkinter(),
+        text='hello',
         wraplength=400,
         font=calibri_font,
     )
@@ -122,15 +127,6 @@ def welcome_screen():
     continue_button.grid(row=0, column=1, sticky=tk.W + tk.E)
 
     top.mainloop()
-
-
-# TODO
-def welcome_text_tkinter() -> str:
-    return '''Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 
-    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est 
-    laborum. '''
 
 
 def get_processor_name() -> str:
