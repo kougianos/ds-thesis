@@ -24,6 +24,3 @@ elif functionality == 2:
 elif functionality == 3:
     results_df = h.get_mongo_algorithm_executions(lang)
     h.save_dataframe_to_excel(results_df, 'algorithm_executions', True, lang=lang)
-    pass
-
-pass
