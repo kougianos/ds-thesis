@@ -12,8 +12,8 @@ The theoretical part of this thesis is presented in Chapters 2 and 3 of *thesis_
 *	Open a dataset of your choice and create excel files with basic and extended information regarding the dataset. The files are saved in a user-defined destination folder.
 *	Retrieve algorithm execution metrics from other users (including yourself) and save them to an excel file, in a folder of your choice.
 
-**Architecture**  
-TODO
+**Design**  
+![image](https://user-images.githubusercontent.com/23719920/127898453-69222725-6b53-440e-ba9f-d3005c17129f.png)
 
 #
 ### Instructions and helpful information
