@@ -29,3 +29,6 @@ Make sure `pip` command is added to PATH, then open a terminal and run
 **Execute python script:**  
 Make sure `python3/python` commands are added to PATH, then open a terminal where the python script is located, and run  
 `python python_file_name.py` 
+
+**How to run:**  
+TODO
