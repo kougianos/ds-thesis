@@ -1,4 +1,4 @@
-## Application development for supervised and unsupervised machine learning, utilized on a dataset of building energy features recordings.
+## Application development for supervised and unsupervised machine learning, utilized on a dataset of building energy features recording.
 
 **Scope - Purpose**  
 The scope of this repository is to present essential information related with the fields of Data Science and Machine Learning, and implement a Command Line Interface that offers 3 functionalities, explained below.
