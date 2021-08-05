@@ -30,6 +30,7 @@ print('Correct predictions: ' + str(correct))
 print('Wrong predictions: ' + str((len(y_kmeans) - correct)))
 print('Accuracy ' + '{0:.2%}'.format(correct/len(y)))
 
+# ####PLOTS
 # Create plot with predicted values
 # Create custom colormap with 2 colors
 base = plt.cm.get_cmap('coolwarm')
@@ -48,5 +49,6 @@ plt.savefig('../../img/kmeans_predicted_clusters.png')
 
 # Create plot with actual values
 plt.scatter(x[:, 0], x[:, 1], c=y, s=15, cmap=custom_cmap)
+plt.title('k-means occupancy actual values');
 plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5);
 plt.savefig('../../img/kmeans_actual_clusters.png')
