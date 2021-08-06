@@ -44,11 +44,11 @@ cbar = plt.colorbar(label='Occupancy', ticks=np.linspace(0.25, 0.75, 2))
 cbar.set_ticklabels([0, 1])
 plt.title('k-means occupancy predicted values')
 centers = kmeans.cluster_centers_
-plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5);
+plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
 plt.savefig('../../img/kmeans_predicted_clusters.png')
 
 # Create plot with actual values
 plt.scatter(x[:, 0], x[:, 1], c=y, s=15, cmap=custom_cmap)
 plt.title('k-means occupancy actual values')
-plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5);
+plt.scatter(centers[:, 0], centers[:, 1], c='black', s=200, alpha=0.5)
 plt.savefig('../../img/kmeans_actual_clusters.png')
