@@ -30,5 +30,21 @@ Make sure `pip` command is added to PATH, then open a terminal and run
 Make sure `python3/python` commands are added to PATH, then open a terminal where the python script is located, and run  
 `python python_file_name.py` 
 
-**How to run:**  
-TODO
+### How to run:
+1. **Download source code.**  
+You need to have Python 3, Pip and Git installed on your machine.
+- `git clone https://github.com/kougianos/ds-thesis.git`
+- `cd ds-thesis/app`
+- `pip install -r requirements.txt`
+- `python mainCLI.py`
+- Follow on-screen instructions.  
+
+OR  
+
+2. **Download .exe file created with Pyinstaller.**  
+Windows-only, you don't need to have anything else installed on your machine.
+- Download file from https://grizzledwizard.eu/docs/kougianos_thesis.zip (~350MB)
+- Unzip file.
+- Open folder and locate file named *mainCLI.exe*, and click on it.  
+- Follow on-screen instructions.
+
