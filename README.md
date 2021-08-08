@@ -45,6 +45,6 @@ OR
 Windows-only, you don't need to have anything else installed on your machine.
 - Download file from https://grizzledwizard.eu/docs/kougianos_thesis.zip (~350MB)
 - Unzip file.
-- Open folder and locate file named *mainCLI.exe*, and click on it.  
+- Open folder and locate file named *mainCLI.exe*, and double click on it.  
 - Follow on-screen instructions.
 
