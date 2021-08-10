@@ -41,8 +41,8 @@ You need to have Python 3, Pip and Git installed on your machine.
 
 OR  
 
-2. **Download .exe file created with Pyinstaller.**  
-Windows-only, you don't need to have anything else installed on your machine.
+2. **Download .exe file created with Pyinstaller (works only on Windows).**  
+You don't need to have anything else installed on your machine.
 - Download file from https://grizzledwizard.eu/docs/kougianos_thesis.zip (~350MB)
 - Unzip file.
 - Open folder and locate file named *mainCLI.exe*, and double click on it.  
