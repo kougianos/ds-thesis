@@ -1,7 +1,8 @@
+import datetime
+
 import pandas as pd
 from sklearn import metrics
 from sklearn.tree import DecisionTreeClassifier
-import datetime
 
 df1 = pd.read_csv('../../data/datatest.csv').drop(['sn', 'date'], axis=1)
 df2 = pd.read_csv('../../data/datatest2.csv').drop(['sn', 'date'], axis=1)
