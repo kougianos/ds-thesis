@@ -1,6 +1,6 @@
 ## Application development for supervised and unsupervised machine learning, utilized on a dataset of building energy features recording.
 
-**Scope - Purpose**  
+**Scope**  
 The scope of this repository is to present essential information related with the fields of Data Science and Machine Learning, and implement a Command Line Interface that offers 3 functionalities, explained below.
 
 The theoretical part of this thesis is presented in Chapters 2 and 3 of *thesis_kougianos.pdf*, while the practical one in Chapter 4. The 3 main functionalities that are currently supported by the CLI are:  
@@ -41,10 +41,10 @@ You need to have Python 3, Pip and Git installed on your machine.
 
 OR  
 
-2. **Download .exe file created with Pyinstaller.**  
-Windows-only, you don't need to have anything else installed on your machine.
+2. **Download .exe file created with Pyinstaller (works only on Windows).**  
+You don't need to have anything else installed on your machine.
 - Download file from https://grizzledwizard.eu/docs/kougianos_thesis.zip (~350MB)
 - Unzip file.
-- Open folder and locate file named *mainCLI.exe*, and click on it.  
+- Open folder and locate file named *mainCLI.exe*, and double click on it.  
 - Follow on-screen instructions.
 
