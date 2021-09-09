@@ -24,3 +24,11 @@ elif functionality == 2:
 elif functionality == 3:
     results_df = h.get_mongo_algorithm_executions(lang)
     h.save_dataframe_to_excel(results_df, 'algorithm_executions', True, lang=lang)
+
+# For .exe file only
+# if lang == 'EN':
+#     print('Press any key to end program...')
+# else:
+#     print('Πατήστε οποιοδήποτε πλήκτρο για να τερματιστεί το πρόγραμμα...')
+#
+# x = input()
