@@ -42,7 +42,8 @@ You need to have Python 3, Pip and Git installed on your machine.
 OR  
 
 2. **Download .exe file created with Pyinstaller (works only on Windows).**  
-You don't need to have anything else installed on your machine.
+You don't need to have anything else installed on your machine.  
+*Disclaimer: CPU and RAM information are not supported when running tha application as .exe, due to a probable bug.*
 - Download file from https://grizzledwizard.eu/docs/kougianos_thesis.zip (~350MB)
 - Unzip file.
 - Open folder and locate file named *mainCLI.exe*, and double click on it.  
