@@ -3,7 +3,7 @@
 **Scope**  
 The scope of this repository is to present essential information related with the fields of Data Science and Machine Learning, and implement a Command Line Interface that offers 3 functionalities, explained below.
 
-The theoretical part of this thesis is presented in Chapters 2 and 3 of *thesis_kougianos.pdf*, while the practical one in Chapter 4. The 3 main functionalities that are currently supported by the CLI are:  
+The theoretical part of this thesis is presented in Chapters 2 and 3 of *thesis_kougianos.pdf*, while the complete implementation is depicted in Chapter 4. The 3 main functionalities that are currently supported by the CLI are:  
 *	Executing a supervised learning algorithm of your choice to a predefined dataset. Algorithm execution metrics along with other information (username, cpu info etc.) are then saved in a MongoDB cluster. Supported algorithms: <br>
   &nbsp;&nbsp;&nbsp;&nbsp; 1.	SVM   
   &nbsp;&nbsp;&nbsp;&nbsp; 2.	Logistic Regression  
